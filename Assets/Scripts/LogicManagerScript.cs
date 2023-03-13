@@ -25,4 +25,8 @@ public class LogicManagerScript : MonoBehaviour
         gameOverScreen.SetActive(true);
     }
 
+    public void quitGame() {
+        Application.Quit();
+    }
+
 }
