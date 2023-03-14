@@ -5,6 +5,7 @@ using UnityEngine;
 public class PipeSpawnerScript : MonoBehaviour
 {
     public GameObject pipe;
+    public LogicManagerScript logic;
     public float spawnRate = 2;
     public float heightOffset = 10;
     private float timer = 0;
@@ -12,21 +13,24 @@ public class PipeSpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
         spawnPipe();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer < spawnRate)
-        {
-            timer = timer + Time.deltaTime;
-        }
-        else {
-             spawnPipe();
-             timer = 0;
-        }
-
+       
+            if (timer < spawnRate)
+            {
+                timer = timer + Time.deltaTime;
+            }
+            else
+            {
+                spawnPipe();
+                timer = 0;
+            }
+        
     }
 
     void spawnPipe() {

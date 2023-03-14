@@ -9,6 +9,7 @@ public class LogicManagerScript : MonoBehaviour
     public int playerScore;
     public Text scoreText;
     public GameObject gameOverScreen;
+    public bool showGameplay = true;
 
     [ContextMenu("increase score")]
     public void AddScore(int scoreToAdd) {
@@ -16,8 +17,14 @@ public class LogicManagerScript : MonoBehaviour
         scoreText.text = playerScore.ToString();
     }
 
+    public void startGame()
+    {
+        showGameplay = true;
+        SceneManager.LoadScene("Gameplay");
+    }
+
     public void restartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Gameplay");
     }
 
 
@@ -26,7 +33,10 @@ public class LogicManagerScript : MonoBehaviour
     }
 
     public void quitGame() {
-        Application.Quit();
+        showGameplay = false;
+
+        SceneManager.LoadScene("MainMenu");
+
     }
 
 }

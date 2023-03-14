@@ -6,8 +6,8 @@ using UnityEngine;
 public class BirdScript : MonoBehaviour
 {
     public Rigidbody2D myRigidbody;
-    public float upVelocity = 22;
     public LogicManagerScript logic;
+    public float upVelocity = 22;
     public bool birdIsAlive = true;
 
 
@@ -15,19 +15,25 @@ public class BirdScript : MonoBehaviour
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive) {
-            myRigidbody.velocity = UnityEngine.Vector2.up * upVelocity;
-        }
+        
 
-        if (transform.position.y > 17 || transform.position.y < -17) {
-            doGameOver();
-        }
+            if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive)
+            {
+                myRigidbody.velocity = UnityEngine.Vector2.up * upVelocity;
+            }
+
+            if (transform.position.y > 17 || transform.position.y < -17)
+            {
+                doGameOver();
+            }
+
+        
+        
 
     }
 
